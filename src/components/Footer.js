@@ -3,22 +3,22 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className='bg-[#0D0D0D] flex flex-row flex-nowrap items-center justify-center gap-[10px] h-min overflow-hidden p-[100px_40px_30px] relative w-full'>
+    <footer className='bg-[#0D0D0D] flex flex-row flex-nowrap items-center justify-center gap-[10px] h-min overflow-hidden lg:md:p-[100px_40px_30px] p-[60px_20px_20px] relative w-full'>
       <div className='flex flex-col flex-nowrap items-center justify-center gap-[30px] h-min max-w-[1200px] w-full overflow-hidden p-0 relative'>
-        <div className='flex flex-col flex-nowrap items-start justify-center gap-[10px] h-min overflow-visible p-0 relative w-full'>
+        <div className='flex flex-col flex-nowrap items-start justify-center lg:md:gap-[10px] gap-5 h-min overflow-visible p-0 relative w-full'>
           <div className='flex flex-col flex-nowrap items-start justify-center gap-0 h-min overflow-hidden p-0 relative w-full'>
-            <div className='text-xl text-[#E9E9E7] leading-[1.4em] font-normal font-Plus_Jakarta_Sans'>Have an idea?</div>
-            <div className='text-4xl text-[#E9E9E7] font-Plus_Jakarta_Sans font-medium'>Let’s rock with me</div>
+            <div className='lg:md:text-xl text-lg text-[#E9E9E7] leading-[1.4em] font-normal font-Plus_Jakarta_Sans'>Have an idea?</div>
+            <div className='lg:md:text-4xl text-[28px] text-[#E9E9E7] font-Plus_Jakarta_Sans font-medium'>Let’s rock with me</div>
           </div>
           <div className='w-full h-[1px] bg-[#E9E9E7] mt-[10px]' />
           <div>
-            <p className='text-[84px] text-[#E9E9E7] font-Plus_Jakarta_Sans font-medium'>
+            <p className='lg:md:text-[84px] text-[44px] text-[#E9E9E7] font-Plus_Jakarta_Sans font-medium'>
               <a className='hover:text-[#EB5939] cursor-pointer'>Contact Me</a>
             </p>
           </div>
         </div>
         <div className='w-full h-[1px] bg-[#E9E9E7]' />
-        <div className='w-full flex justify-between items-start'>
+        <div className='w-full flex lg:md:flex-row flex-col justify-between lg:md:items-start items-center gap-5'>
           <div className='relative flex justify-center items-center flex-row gap-5 p-0 w-min	h-min overflow-hidden'>
             <Link href='/' className='relative overflow-visible w-[142px] aspect-3.55/1 flex justify-center items-center gap-2'>
               <img className='w-11 h-11' src='https://res.cloudinary.com/ddtfebvov/image/upload/v1735989459/IMG_8531_aerspw.webp' alt='logo' />
