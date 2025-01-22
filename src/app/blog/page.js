@@ -46,7 +46,7 @@ const page = () => {
                         <img className='block w-full h-full rounded-none object-center object-cover' src={data.image} alt='blogImage' />
                       </div>
                     </div>
-                  </Link>
+                  </Link> 
                   <div className='content-start items-start justify-center flex flex-col gap-5 h-min overflow-hidden p-0 relative w-full'>
                     <div className='flex flex-col flex-shrink-0 justify-start flex-none h-auto w-full relative whitespace-pre-wrap break-words outline-none transform-none opacity-100'>
                       <p className='text-base text-[#0d0d0d80] leading-[1.4em] font-normal font-Plus_Jakarta_Sans'>{data.postedOn}</p>
