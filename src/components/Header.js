@@ -78,11 +78,11 @@ const Header = ({ textColor }) => {
                 </Link>
               </div>
               <div className='lg:md:hidden flex-none h-auto relative w-auto'>
-                <div className={`border border-[#e9e9e7] border-solid navOpen hover:bg-[#eb5939] hover:border-[#eb5939] bg-transparent duration-500 rounded-[50px] transform transition-colors origin-[50%_50%_0px] opacity-100 flex items-center justify-center cursor-pointer flex-row flex-nowrap gap-2 h-min w-min overflow-hidden p-2 relative will-change-auto`} onClick={() => setNavOpen((prev) => !prev)}>
+                <div className={`border ${textColor === '#e9e9e7' ? 'border-[#e9e9e7]' : 'border-[#0d0d0d]'} border-solid navOpen hover:bg-[#eb5939] hover:border-[#eb5939] bg-transparent duration-500 rounded-[50px] transform transition-colors origin-[50%_50%_0px] opacity-100 flex items-center justify-center cursor-pointer flex-row flex-nowrap gap-2 h-min w-min overflow-hidden p-2 relative will-change-auto`} onClick={() => setNavOpen((prev) => !prev)}>
                   <div className='w-5 h-5 relative flex-none transform-none origin-[50%_50%_0px]'>
                     <div className='flex justify-center items-center'>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" color="#e9e9e7" style={{ userSelect: "none", width: "100%", height: "100%", display: "inline-block", fill: "#e9e9e7", color: "#e9e9e7", flexShrink: 0 }}>
-                        <g color="#e9e9e7" weight="light"><path d="M34,64a6,6,0,0,1,6-6H216a6,6,0,0,1,0,12H40A6,6,0,0,1,34,64Zm6,46H168a6,6,0,0,0,0-12H40a6,6,0,0,0,0,12Zm176,28H40a6,6,0,0,0,0,12H216a6,6,0,0,0,0-12Zm-48,40H40a6,6,0,0,0,0,12H168a6,6,0,0,0,0-12Z"></path>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" color={textColor === '#e9e9e7' ? '#e9e9e7' : '#0d0d0d'} style={{ userSelect: "none", width: "100%", height: "100%", display: "inline-block", fill: textColor === '#e9e9e7' ? '#e9e9e7' : '#0d0d0d', color: textColor === '#e9e9e7' ? '#e9e9e7' : '#0d0d0d', flexShrink: 0 }}>
+                        <g color={textColor === '#e9e9e7' ? '#e9e9e7' : '#0d0d0d'} weight="light"><path d="M34,64a6,6,0,0,1,6-6H216a6,6,0,0,1,0,12H40A6,6,0,0,1,34,64Zm6,46H168a6,6,0,0,0,0-12H40a6,6,0,0,0,0,12Zm176,28H40a6,6,0,0,0,0,12H216a6,6,0,0,0,0-12Zm-48,40H40a6,6,0,0,0,0,12H168a6,6,0,0,0,0-12Z"></path>
                         </g>
                       </svg>
                     </div>
