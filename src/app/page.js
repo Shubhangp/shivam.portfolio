@@ -6,7 +6,7 @@ import { profolio, companiesData } from "@/server/data";
 
 export default function Home() {
   const [headerColor, setHeaderColor] = useState("#e9e9e7");
-  const [open, setOpen] = useState(null)
+  const [open, setOpen] = useState(0)
 
   const sections = [
     { id: "partOne", color: "#e9e9e7" },
