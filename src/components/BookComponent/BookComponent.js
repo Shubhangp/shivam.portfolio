@@ -4,7 +4,8 @@ import Header from '@/components/Header';
 import { books } from '@/server/data';
 
 const BookComponent = () => {
-    const [translateY, setTranslateY] = useState(0);
+    const [translateY, setTranslateY] = useState(-218.609);
+    const [mobTranslateY, setMobTranslateY] = useState(-100);
     const [headerColor, setHeaderColor] = useState("#0d0d0d");
 
     useEffect(() => {
@@ -13,7 +14,7 @@ const BookComponent = () => {
                 const isMobile = window.innerWidth <= 768;
                 const baseTranslateY = isMobile ? -100 : -218.609;
                 const newTranslateY = baseTranslateY + scrollY * 0.5;
-                setTranslateY(newTranslateY);
+                isMobile? setMobTranslateY(newTranslateY) : setTranslateY(newTranslateY);
             };
     
             window.addEventListener('scroll', handleScroll);
@@ -85,6 +86,22 @@ const BookComponent = () => {
                     className='aspect-w-17 aspect-h-10 flex-1 lg:md:h-[700px] h-[227px] overflow-visible relative w-[1px]'
                     style={{
                         transform: `translateY(${translateY}px)`,
+                        willChange: 'transform',
+                        visibility: 'initial',
+                        opacity: 1,
+                        transition: 'transform 0s ease-out',
+                    }}
+                >
+                    <div className='absolute inset-0'>
+                        <img className='block w-full h-full rounded-inherit object-center object-cover' src='https://framerusercontent.com/images/AY34Q2gsg9hQvMguzSwe4GNAyd8.jpg' alt='img' />
+                    </div>
+                </div>
+            </div>
+            <div id="partTwo" className='place-content-center items-center lg:md:hidden bg-[#0d0d0d] flex flex-none flex-row gap-2 h-min overflow-hidden p-0 relative w-full'>
+                <div
+                    className='aspect-w-17 aspect-h-10 flex-1 lg:md:h-[700px] h-[227px] overflow-visible relative w-[1px]'
+                    style={{
+                        transform: `translateY(${mobTranslateY}px)`,
                         willChange: 'transform',
                         visibility: 'initial',
                         opacity: 1,
