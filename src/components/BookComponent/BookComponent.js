@@ -8,16 +8,17 @@ const BookComponent = () => {
     const [headerColor, setHeaderColor] = useState("#0d0d0d");
 
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const isMobile = window.innerWidth <= 768;
-            const baseTranslateY = isMobile ? -100 : -218.609;
-            const newTranslateY = baseTranslateY + scrollY * 0.5;
-            setTranslateY(newTranslateY);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
+        if (typeof window !== 'undefined'){
+            const handleScroll = () => {
+                const scrollY = window.scrollY;
+                const isMobile = window.innerWidth <= 768;
+                const baseTranslateY = isMobile ? -100 : -218.609;
+                const newTranslateY = baseTranslateY + scrollY * 0.5;
+                setTranslateY(newTranslateY);
+            };
+    
+            window.addEventListener('scroll', handleScroll);
+        }
     }, []);
 
     const sections = [
@@ -27,31 +28,33 @@ const BookComponent = () => {
     ];
 
     useEffect(() => {
-        const handleScroll = () => {
-            const headerHeight = 50;
-            const scrollPosition = window.scrollY;
-
-            sections.forEach((section) => {
-                const element = document.getElementById(section.id);
-                if (element) {
-                    const sectionTop = element.offsetTop;
-                    const sectionHeight = element.offsetHeight;
-
-                    if (
-                        scrollPosition >= sectionTop - headerHeight &&
-                        scrollPosition < sectionTop + sectionHeight - headerHeight
-                    ) {
-                        setHeaderColor(section.color);
+        if (typeof window !== 'undefined') {
+            const handleScroll = () => {
+                const headerHeight = 50;
+                const scrollPosition = window.scrollY;
+    
+                sections.forEach((section) => {
+                    const element = document.getElementById(section.id);
+                    if (element) {
+                        const sectionTop = element.offsetTop;
+                        const sectionHeight = element.offsetHeight;
+    
+                        if (
+                            scrollPosition >= sectionTop - headerHeight &&
+                            scrollPosition < sectionTop + sectionHeight - headerHeight
+                        ) {
+                            setHeaderColor(section.color);
+                        }
                     }
-                }
-            });
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+                });
+            };
+    
+            window.addEventListener("scroll", handleScroll);
+    
+            return () => {
+                window.removeEventListener("scroll", handleScroll);
+            };
+        }
     }, [sections]);
 
     return (
