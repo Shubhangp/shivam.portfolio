@@ -44,9 +44,9 @@ const ScrollComponent = ({ project }) => {
       }, []);
   
     return (
-        <div id="scrolling-element" className='place-content-center items-center aspect-[2.35294/1] flex flex-none flex-row gap-2.5 h-[510px] overflow-hidden p-0 relative w-full'>
+        <div id="scrolling-element" className='place-content-center items-center aspect-[2.35294/1] flex flex-none flex-row gap-2.5 lg:md:h-[510px] h-[166px] overflow-hidden p-0 relative w-full'>
             <div
-                className="flex justify-center items-center flex-[1_0_0px] h-full w-full transition-all duration-500 ease-out"
+                className="flex justify-center items-center flex-[1_0_0px] h-full lg:md:w-[1px] w-full transition-all duration-500 ease-out overflow-visible"
                 style={{
                 ...transformStyle,
                 transition: "opacity 0s ease, transform 0s ease",

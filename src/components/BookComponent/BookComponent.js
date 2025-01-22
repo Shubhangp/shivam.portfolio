@@ -2,28 +2,28 @@
 import React, { useEffect, useState } from 'react'
 import Header from '@/components/Header';
 import { books } from '@/server/data';
-import Link from 'next/link';
 
 const BookComponent = () => {
-    const [translateY, setTranslateY] = useState(-218.609);
+    const [translateY, setTranslateY] = useState(window.innerWidth <= 768 ? -100 : -218.609);
     const [headerColor, setHeaderColor] = useState("#0d0d0d");
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
-            const newTranslateY = -218.609 + scrollY * 0.5;
+            const isMobile = window.innerWidth <= 768;
+            const baseTranslateY = isMobile ? -100 : -218.609;
+            const newTranslateY = baseTranslateY + scrollY * 0.5;
             setTranslateY(newTranslateY);
         };
 
         window.addEventListener('scroll', handleScroll);
 
-        // return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const sections = [
         { id: "partOne", color: "#0d0d0d" },
         { id: "partTwo", color: "#e9e9e7" },
-        { id: "partThree", color: "#e9e9e7" },
+        { id: "partThree", color: "#0d0d0d" },
     ];
 
     useEffect(() => {
@@ -59,18 +59,18 @@ const BookComponent = () => {
             <Header textColor={headerColor} />
             <div className='flex-none h-[100px] overflow-hidden relative w-full'></div>
             {/* Part One */}
-            <div id="partOne" className='flex flex-row items-center justify-center gap-2.5 h-min overflow-hidden p-[100px_40px] relative w-full'>
-                <div className='place-content-center flex flex-col items-center justify-center gap-20 flex-[1_0_0px] h-min max-w-[1200px] overflow-hidden relative w-[1px]'>
+            <div id="partOne" className='flex flex-row items-center justify-center gap-2.5 h-min overflow-hidden lg:md:p-[100px_40px] p-[60px_20px]  relative w-full'>
+                <div className='place-content-center flex flex-col items-center justify-center gap-20 flex-[1_0_0px] h-min max-w-[1200px] overflow-hidden relative lg:md:w-[1px] w-full'>
                     <div className='flex flex-col items-center justify-center gap-5 h-min overflow-hidden p-0 relative w-full'>
-                        <div className='flex flex-col items-center justify-center gap-0 h-min overflow-hidden p-0 relative w-[550px]'>
+                        <div className='flex flex-col items-center justify-center gap-0 h-min overflow-hidden p-0 relative lg:md:w-[650px] w-full'>
                             <div className='flex flex-col items-start flex-shrink-0 h-auto relative whitespace-pre w-auto outline-none transform-none'>
                                 <p className='text-lg text-[#EB5939] uppercase tracking-[0.12em] leading-[1.2em] font-medium font-Plus_Jakarta_Sans'>My Books</p>
                             </div>
                             <div className='flex flex-col justify-start flex-shrink-0 transform-none flex-none h-auto relative whitespace-pre-wrap w-full break-words overflow-wrap break-word outline-none'>
-                                <h1 className='text-[42px] text-[#0d0d0d] text-center leading-[1.2em] font-medium font-Plus_Jakarta_Sans'>Unlocking the Power of Brand Evolution</h1>
+                                <h1 className='lg:md:text-[42px] text-[32px] text-[#0d0d0d] text-center leading-[1.2em] font-medium font-Plus_Jakarta_Sans'>Unlocking the Power of Brand Evolution</h1>
                             </div>
                         </div>
-                        <div className='outline-none flex flex-col justify-start flex-shrink-0 transform-none flex-none h-auto relative whitespace-pre-wrap w-[600px] break-words overflow-wrap'>
+                        <div className='outline-none flex flex-col justify-start flex-shrink-0 transform-none flex-none h-auto relative whitespace-pre-wrap lg:md:w-[750px] w-full break-words overflow-wrap'>
                             <p className='text-base text-[#0d0d0d] text-center leading-[1.4em] font-normal font-Plus_Jakarta_Sans'>
                                 Explore My Books: Discovering How I Evolve Brands for a Changing World, Ensuring Cultural Relevance and Future Readiness through Case Studies.
                             </p>
@@ -81,7 +81,7 @@ const BookComponent = () => {
             {/* Part Two */}
             <div id="partTwo" className='place-content-center items-center bg-[#0d0d0d] flex flex-none flex-row gap-2 h-min overflow-hidden p-0 relative w-full'>
                 <div
-                    className='aspect-w-17 aspect-h-10 flex-1 h-[700px] overflow-visible relative w-[1px]'
+                    className='aspect-w-17 aspect-h-10 flex-1 lg:md:h-[700px] h-[227px] overflow-visible relative w-[1px]'
                     style={{
                         transform: `translateY(${translateY}px)`,
                         willChange: 'transform',
@@ -96,54 +96,37 @@ const BookComponent = () => {
                 </div>
             </div>
             {/* Part Three*/}
-            <div id="partThree" className="flex-none bg-[#0d0d0d] flex flex-row gap-2.5 h-min justify-center overflow-hidden px-10 py-[100px] relative w-full border-b border-[#e9e9e780]">
-                <div className="flex items-center flex-[1_0_0px] flex-col gap-[50px] h-min justify-center max-w-[1200px] overflow-hidden p-0 relative w-[1px]">
-                    <div className="flex flex-row justify-between h-min overflow-hidden px-0 relative w-full">
-                        <div className="outline-none flex flex-col justify-start flex-shrink-0 transform-none flex-none h-auto relative w-[500px] whitespace-pre-wrap break-words">
-                            <h2 className="text-[36px] text-[#e9e9e7] leading-[1.2em] font-Plus_Jakarta_Sans font-medium">Take a Look at My Books</h2>
-                        </div>
-                    </div>
-                    <div className="bg-[rgba(233,233,231,0.5)] flex-none h-[1px] overflow-hidden relative w-full"></div>
-                    <div className="flex items-center flex-none flex-col gap-[40px] h-min justify-center overflow-hidden p-0 relative w-full">
-                        {books.map((data, index) => (<>
-                            <div key={index} className="flex-none h-auto relative w-full group">
-                                <div className="contents">
-                                    <div className="flex items-start cursor-pointer flex-row flex-nowrap gap-[50px] h-min justify-center overflow-hidden p-0 relative w-full opacity-100">
-                                        <div className="flex items-start self-stretch flex-col flex-nowrap h-auto justify-between overflow-hidden p-0 relative w-1/3">
-                                            <div className="flex items-center flex-col flex-nowrap gap-5 h-min justify-center overflow-hidden p-0 relative w-full">
-                                                <div className="flex items-center flex-col flex-nowrap gap-2 h-min justify-center overflow-hidden p-0 relative w-full">
-                                                    <div className="flex-none h-auto relative whitespace-pre-wrap w-full break-words outline-none flex flex-col justify-start flex-shrink-0 transform-none opacity-100">
-                                                        <h2 className="text-[32px] text-[#e9e9e7] leading-[1.2em] font-medium font-Plus_Jakarta_Sans">{data.bookHeading}</h2>
-                                                    </div>
-                                                    <div className="flex-none h-auto relative whitespace-pre-wrap w-full break-words outline-none flex flex-col justify-start flex-shrink-0 transform-none opacity-100">
-                                                        <h3 className="text-[20px] text-[#e9e9e7] leading-[1.4em] font-normal font-Plus_Jakarta_Sans">{data.bookSubHeading}</h3>
-                                                    </div>
-                                                </div>
-                                                <div className="flex-none h-auto relative whitespace-pre-wrap w-full break-words outline-none flex flex-col justify-start flex-shrink-0 transform-none opacity-100">
-                                                    <p className="text-[20px] text-[#e9e9e780] leading-[1.4em] font-normal font-Plus_Jakarta_Sans">{data.postedOn}</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex-none h-auto relative w-auto">
-                                                <a href={data.slug} target='_blank' className="w-max flex flex-col justify-start bg-transparent border border-[#E9E9E7] text-[#E9E9E7] transform transition-all duration-700 ease-out px-5 py-[2px] rounded-full hover:tracking-widest hover:text-[#E9E9E7] hover:bg-[#EB5939] hover:border-[#EB5939]">
-                                                    <div className="w-auto flex gap-[10px]">
-                                                        <p className="text-sm uppercase font-Plus_Jakarta_Sans ">Checkout</p>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" focusable="false" fill='#E9E9E7'><g color='#E9E9E7' weight="light"><path d="M198,64V168a6,6,0,0,1-12,0V78.48L68.24,196.24a6,6,0,0,1-8.48-8.48L177.52,70H88a6,6,0,0,1,0-12H192A6,6,0,0,1,198,64Z"></path></g></svg>
-                                                    </div>
-                                                </a>
+            <div id="partThree" className='flex items-center justify-center flex-row gap-2 h-min overflow-hidden lg:md:px-10 px-5 lg:md:py-24 py-[60px] relative w-full'>
+                <div className='flex flex-col items-center justify-center gap-12 flex-[1_0_0px] h-min max-w-[1200px] overflow-hidden p-0 relative lg:md:w-[1px] w-full'>
+                    <div className='flex flex-row items-center justify-center gap-8 h-min overflow-hidden p-0 relative w-full'>
+                        <div className='flex-[1_0_0px] grid lg:md:grid-cols-[repeat(3,minmax(100px,_1fr))] grid-cols-[repeat(1,minmax(100px,_1fr))] auto-rows-min gap-10 justify-items-center h-min p-0 relative w-[1px]'>
+                            {books.map((data, index) => (<div key={index} className='self-start flex-none h-auto relative w-full group'>
+                                <div className='place-content-center items-center cursor-pointer flex flex-col gap-8 h-min overflow-hidden p-0 relative w-full opacity-100'>
+                                    <a href={data.slug} className='place-content-center items-center aspect-[1.32707/1] flex flex-row gap-2.5 lg:md:h-[450px] h-[366px] overflow-hidden p-0 relative no-underline w-full'>
+                                        <div className='flex-none h-[115%] overflow-hidden relative w-[115%] transform-none origin-center group-hover:scale-[0.92] duration-500'>
+                                            <div className='absolute rounded-none inset-0'>
+                                                <img className='block w-full h-full rounded-none object-center object-fill' src={data.image} alt='blogImage' />
                                             </div>
                                         </div>
-                                        <div className="flex items-center aspect-[1.6/1] flex-1 flex-row gap-2.5 justify-center overflow-hidden p-0 relative w-[1px] opacity-100">
-                                            <div className="flex-none h-[110%] overflow-hidden relative w-[110%] transform-none origin-[50%_50%_0px] group-hover:scale-[0.92] duration-700">
-                                                <div className="absolute rounded-inherit top-0 right-0 bottom-0 left-0">
-                                                    <img sizes="calc(max(min(1100px, 100vw) * 0.6818 - 50px, 0px) * 1.1)" className="block w-full h-full rounded-inherit object-center object-cover" src={data.image} />
+                                    </a>
+                                    <div className='content-start items-start justify-center flex flex-col gap-3 h-min overflow-hidden p-0 relative w-full'>
+                                        <div className='flex flex-col justify-start flex-none h-auto w-full relative whitespace-pre-wrap break-words outline-none transform-none opacity-100'>
+                                            <h5 className='lg:md:text-2xl text-[20px] text-[#0d0d0d] leading-[1.2em] font-medium font-Plus_Jakarta_Sans'>{data.bookHeading}</h5>
+                                        </div>
+                                        <div className='flex flex-col justify-start flex-none h-auto w-full relative whitespace-pre-wrap break-words outline-none transform-none opacity-100'>
+                                            <h3 className="text-[16px] text-[#0d0d0d] leading-[1.4em] font-normal font-Plus_Jakarta_Sans">{data.bookSubHeading}</h3>
+                                        </div>
+                                        <div className=''>
+                                            <a href={data.slug} className="w-max flex flex-col justify-start bg-[#0d0d0d] text-[#e9e9e7] transform transition-all duration-500 ease-out px-5 py-[10px] hover:tracking-[0.08em] hover:bg-[#EB5939]">
+                                                <div className="w-auto">
+                                                    <p className="text-sm leading-[1.1em] font-Plus_Jakarta_Sans font-medium">READ MORE</p>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {books.length !== index + 1 && <div className="bg-[rgba(233,233,231,0.5)] flex-none h-[1px] overflow-hidden relative w-full"></div>}
-                        </>))}
+                            </div>))}
+                        </div>
                     </div>
                 </div>
             </div>
