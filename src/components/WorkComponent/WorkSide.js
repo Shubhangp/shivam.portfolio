@@ -5,7 +5,7 @@ import { playGround, profolio } from '@/server/data';
 import Link from 'next/link';
 
 const WorkSide = () => {
-    const [translateY, setTranslateY] = useState(window.innerWidth <= 768 ? -100 : -218.609);
+    const [translateY, setTranslateY] = useState(0);
     const [headerColor, setHeaderColor] = useState("#0d0d0d");
     const [showPhoto, setShowPhoto] = useState(0);
     const contentRef = useRef(null);

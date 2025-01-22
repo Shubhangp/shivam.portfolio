@@ -4,11 +4,10 @@ import Header from '@/components/Header';
 import { books } from '@/server/data';
 
 const BookComponent = () => {
-    const [translateY, setTranslateY] = useState(window.innerWidth <= 768 ? -100 : -218.609);
+    const [translateY, setTranslateY] = useState(0);
     const [headerColor, setHeaderColor] = useState("#0d0d0d");
 
     useEffect(() => {
-        if (typeof window !== 'undefined'){
             const handleScroll = () => {
                 const scrollY = window.scrollY;
                 const isMobile = window.innerWidth <= 768;
@@ -18,7 +17,6 @@ const BookComponent = () => {
             };
     
             window.addEventListener('scroll', handleScroll);
-        }
     }, []);
 
     const sections = [
